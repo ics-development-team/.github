@@ -1,0 +1,133 @@
+```yaml
+name: Software Change
+description: Request and document a software, API, configuration, or database change
+title: "[CHANGE] "
+labels:
+  - change
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for changes to production applications, APIs,
+        configurations, databases, or supporting services.
+
+  - type: dropdown
+    id: application
+    attributes:
+      label: Application or System
+      description: Select the system affected by this change.
+      options:
+        - External API
+        - Internal Application 1
+        - Internal Application 2
+        - Internal Application 3
+        - Shared Infrastructure or Configuration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Briefly explain why this change is needed.
+      placeholder: Describe the business need, problem, or requested improvement.
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements and Acceptance Criteria
+      description: Describe what must be completed for this change to be considered successful.
+      placeholder: |
+        - The API should...
+        - The user should be able to...
+        - The system should no longer...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Change Type
+      options:
+        - Normal
+        - Emergency
+        - Minor standard change
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk Level
+      description: Consider customer impact, sensitive data, security, and availability.
+      options:
+        - Low
+        - Moderate
+        - High
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and Risk Notes
+      description: Describe possible customer, operational, security, or data impact.
+      placeholder: |
+        Expected impact:
+        Systems or users affected:
+        Security or data considerations:
+    validations:
+      required: false
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing Plan
+      description: Explain how the change will be tested before production deployment.
+      placeholder: |
+        - Unit testing
+        - Manual functional testing
+        - API testing
+        - Regression testing
+        - Database validation
+    validations:
+      required: true
+
+  - type: textarea
+    id: deployment
+    attributes:
+      label: Deployment Plan
+      description: Briefly describe how this change will be deployed.
+      placeholder: |
+        Deployment steps:
+        Configuration or database changes:
+        Expected downtime:
+    validations:
+      required: true
+
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Rollback or Recovery Plan
+      description: Explain how the prior version or service will be restored if the deployment fails.
+      placeholder: Redeploy the previous release, restore configuration, or apply a corrective change.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Development Readiness
+      options:
+        - label: No passwords, API keys, tokens, or secrets will be stored in source code.
+          required: true
+        - label: The change will be developed and tested outside production.
+          required: true
+        - label: A pull request will be linked to this issue.
+          required: true
+        - label: The change will receive peer review before normal production deployment.
+          required: true
+```
