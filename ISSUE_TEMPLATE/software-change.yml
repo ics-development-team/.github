@@ -2,8 +2,6 @@
 name: Software Change
 description: Request and document a software, API, configuration, or database change
 title: "[CHANGE] "
-labels:
-  - change
 body:
   - type: markdown
     attributes:
