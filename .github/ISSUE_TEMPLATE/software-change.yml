@@ -1,14 +1,7 @@
-```yaml
 name: Software Change
-description: Request and document a software, API, configuration, or database change
+description: Request and document a production software change
 title: "[CHANGE] "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Use this form for changes to production applications, APIs,
-        configurations, databases, or supporting services.
-
   - type: dropdown
     id: application
     attributes:
@@ -19,7 +12,7 @@ body:
         - Internal Application 1
         - Internal Application 2
         - Internal Application 3
-        - Shared Infrastructure or Configuration
+        - Shared Configuration
         - Other
     validations:
       required: true
@@ -28,8 +21,8 @@ body:
     id: reason
     attributes:
       label: Reason for Change
-      description: Briefly explain why this change is needed.
-      placeholder: Describe the business need, problem, or requested improvement.
+      description: Explain why the change is needed.
+      placeholder: Describe the problem, request, or business need.
     validations:
       required: true
 
@@ -37,16 +30,15 @@ body:
     id: requirements
     attributes:
       label: Requirements and Acceptance Criteria
-      description: Describe what must be completed for this change to be considered successful.
+      description: Describe what must be true for the change to be complete.
       placeholder: |
-        - The API should...
+        - The system should...
         - The user should be able to...
-        - The system should no longer...
     validations:
       required: true
 
   - type: dropdown
-    id: change_type
+    id: change-type
     attributes:
       label: Change Type
       options:
@@ -60,7 +52,6 @@ body:
     id: risk
     attributes:
       label: Risk Level
-      description: Consider customer impact, sensitive data, security, and availability.
       options:
         - Low
         - Moderate
@@ -69,28 +60,14 @@ body:
       required: true
 
   - type: textarea
-    id: impact
-    attributes:
-      label: Impact and Risk Notes
-      description: Describe possible customer, operational, security, or data impact.
-      placeholder: |
-        Expected impact:
-        Systems or users affected:
-        Security or data considerations:
-    validations:
-      required: false
-
-  - type: textarea
     id: testing
     attributes:
       label: Testing Plan
-      description: Explain how the change will be tested before production deployment.
+      description: Explain how the change will be tested.
       placeholder: |
-        - Unit testing
         - Manual functional testing
         - API testing
         - Regression testing
-        - Database validation
     validations:
       required: true
 
@@ -98,11 +75,11 @@ body:
     id: deployment
     attributes:
       label: Deployment Plan
-      description: Briefly describe how this change will be deployed.
+      description: Describe how the change will be deployed.
       placeholder: |
         Deployment steps:
-        Configuration or database changes:
         Expected downtime:
+        Configuration changes:
     validations:
       required: true
 
@@ -110,8 +87,8 @@ body:
     id: rollback
     attributes:
       label: Rollback or Recovery Plan
-      description: Explain how the prior version or service will be restored if the deployment fails.
-      placeholder: Redeploy the previous release, restore configuration, or apply a corrective change.
+      description: Explain how service will be restored if deployment fails.
+      placeholder: Redeploy the prior version or reverse the configuration change.
     validations:
       required: true
 
@@ -122,10 +99,9 @@ body:
       options:
         - label: No passwords, API keys, tokens, or secrets will be stored in source code.
           required: true
-        - label: The change will be developed and tested outside production.
+        - label: The change will be tested outside production.
           required: true
         - label: A pull request will be linked to this issue.
           required: true
         - label: The change will receive peer review before normal production deployment.
           required: true
-```
