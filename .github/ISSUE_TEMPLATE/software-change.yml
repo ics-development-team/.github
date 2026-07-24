@@ -8,11 +8,9 @@ body:
       label: Application or System
       description: Select the system affected by this change.
       options:
-        - External API
-        - Internal Application 1
-        - Internal Application 2
-        - Internal Application 3
-        - Shared Configuration
+        - background-jobs
+        - api-endpoints
+        - job-bank-web
         - Other
     validations:
       required: true
